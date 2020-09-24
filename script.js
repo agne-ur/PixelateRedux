@@ -17,3 +17,13 @@ addRow.addEventListener("click", function() {
   makeRow();
 })
 
+function colorize (event) {
+    const tdCell = event.target;
+    if (tdCell.className.length) {
+        tdCell.className = ''
+    } else {
+        tdCell.className = 'red'
+    }
+}
+
+table.addEventListener('click', colorize )
