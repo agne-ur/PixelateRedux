@@ -2,6 +2,7 @@
 const addRow = document.getElementById("add-row");
 const table = document.getElementsByTagName("table")[0];
 const select = document.getElementsByTagName("select")[0];
+const clear = document.getElementById("clear");
 let color = 'red';
 
 function makeRow() {
@@ -9,6 +10,7 @@ function makeRow() {
 
   for (let i = 0; i < 15; i++) {
     const cell = document.createElement('td');
+    cell.setAttribute('class', 'default')
     row.appendChild(cell);
   }
 
@@ -18,13 +20,23 @@ function makeRow() {
 function colorize (event) {
   if (event.target.tagName === 'TD') {
     const tdCell = event.target;
-    if (tdCell.className.length) {
-        tdCell.className = ''
+    if (tdCell.className !== 'default') {
+        tdCell.className = 'default'
     } else {
         tdCell.className = color;
         console.dir(tdCell)
     }
   }
+}
+
+function clearPalette() {
+  const rows = Array.from(table.childNodes)
+  rows.forEach(row => {
+    const cells = Array.from(row.childNodes)
+    cells.forEach(cell => {
+      cell.className = 'default';
+    })
+  })
 }
 
 select.addEventListener("change", function(event) {
@@ -48,4 +60,4 @@ table.addEventListener('mousedown', function() {
 
 table.addEventListener('click', colorize )
 
-
+clear.addEventListener('click', clearPalette)
