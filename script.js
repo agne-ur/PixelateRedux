@@ -16,11 +16,14 @@ function makeRow() {
 }
 
 function colorize (event) {
-  const tdCell = event.target;
-  if (tdCell.className.length) {
-      tdCell.className = ''
-  } else {
-      tdCell.className = color;
+  if (event.target.tagName === 'TD') {
+    const tdCell = event.target;
+    if (tdCell.className.length) {
+        tdCell.className = ''
+    } else {
+        tdCell.className = color;
+        console.dir(tdCell)
+    }
   }
 }
 
@@ -28,8 +31,21 @@ select.addEventListener("change", function(event) {
   color = event.target.value;
 })
 
+
 addRow.addEventListener("click", function() {
   makeRow();
 })
 
+table.addEventListener('mouseup', function() {
+    table.removeEventListener('mouseover', colorize )
+})
+
+table.addEventListener('mousedown', function() {
+    table.addEventListener('mouseover', colorize )
+})
+
+//table.addEventListener('mousemove', colorize )
+
 table.addEventListener('click', colorize )
+
+
