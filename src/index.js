@@ -8,16 +8,6 @@ render(
   document.getElementById('app')
 )
 
-const addRow = document.getElementById("add-row");
-const addColumn = document.getElementById("add-column");
-const table = document.getElementsByTagName("table")[0];
-const select = document.getElementsByTagName("select")[0];
-const clear = document.getElementById("clear");
-const fillAll = document.getElementById("fill-all");
-const fillGrey = document.getElementById("fill-grey");
-const columnSelecter = document.getElementsByTagName("select")[1];
-const reset = document.getElementById('reset');
-
 
 
 
