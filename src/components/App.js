@@ -5,7 +5,7 @@ import store from '../store';
 class App extends React.Component {
   constructor(props) {
     super (props)
-    this.state = store.getState()
+    this.state = {}
   }
 
   componentDidMount() {
