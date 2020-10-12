@@ -66,6 +66,9 @@ function getCells() {
 function clearPalette() {
   const cells = getCells()
   cells.forEach(cell => {
+    const startTime = new Date;
+    console.log(startTime);
+    // while(new Date - startTime < 100) {};
     cell.className = 'default';
   })
 }
