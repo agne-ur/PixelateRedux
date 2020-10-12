@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {store, addRow, changeColor, colorize} from "../store";
+import { store, addRow, changeColor, colorize } from "../store";
+import Table from "./Table";
 
 class App extends React.Component {
   constructor(props) {
@@ -17,9 +18,7 @@ class App extends React.Component {
       );
       // Or actually do something like update the DOM
       this.setState(store.getState());
-      console.log(
-        "This is the new state in react:", this.state
-      )
+      console.log("This is the new state in react:", this.state);
     });
   }
 
@@ -57,24 +56,21 @@ class App extends React.Component {
             <option value="19">19</option>
             <option value="21">21</option>
           </select>
-          <button id="add-row" onClick={() => store.dispatch(addRow())}>+Row</button>
+          <button id="add-row" onClick={() => store.dispatch(addRow())}>
+            +Row
+          </button>
           <button id="add-column">+Column</button>
           <button id="fill-all">Fill</button>
           <button id="fill-grey">Fill Grey</button>
           <button id="clear">Clear</button>
           <button id="reset">Reset</button>
         </div>
-        <table>
-          <tbody>
-            {this.state.grid.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((color, cellIndex) => (
-                  <td key={cellIndex} className={color} onClick={() => store.dispatch(colorize(rowIndex, cellIndex))}></td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Table
+          grid={this.state.grid}
+          colorize={colorize}
+          selectedColor={this.state.selectedColor}
+          store={store}
+        />
       </div>
     );
   }
