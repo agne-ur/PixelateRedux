@@ -1,8 +1,10 @@
-import { createStore, applyMiddleware } from 'redux'
-import loggerMiddleware from 'redux-logger'
+import { createStore, applyMiddleware } from "redux";
+import loggerMiddleware from "redux-logger";
 
 // We'll soon revisit the initial state of this application.
-const initialState = {}
+const INITIAL_STATE = {
+  grid: [Array(20).fill("pink")],
+};
 
 // ACTION TYPES
 /* we'll add some action types soon */
@@ -11,16 +13,13 @@ const initialState = {}
 /* we'll also add the corresponding action creators */
 
 // And we'll revisit this reducer.
-function reducer (state = initialState, action) {
+function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     default:
-      return state
+      return state;
   }
 }
 
-const store = createStore(
-  reducer,
-  applyMiddleware(loggerMiddleware)
-)
+const store = createStore(reducer, applyMiddleware(loggerMiddleware));
 
-export default store
+export default store;
